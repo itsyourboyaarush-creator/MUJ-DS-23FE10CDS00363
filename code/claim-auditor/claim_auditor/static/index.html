@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#173e30">
+    <title>Claim Auditor</title>
+    <link rel="stylesheet" href="/static/app.css">
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Claim Auditor home">
+        <span class="brand-mark" aria-hidden="true">C</span>
+        <span>Claim Auditor</span>
+      </a>
+      <div class="topbar-meta"><span class="status-dot"></span> LOCAL WORKSPACE</div>
+    </header>
+
+    <main class="workspace">
+      <section class="source-panel" aria-labelledby="source-title">
+        <div class="section-kicker">01 <span>DOCUMENT</span></div>
+        <div class="panel-heading">
+          <div>
+            <h1 id="source-title">Source text</h1>
+            <p class="subheading">Choose a sample or bring your own article.</p>
+          </div>
+        </div>
+
+        <label class="field-label" for="sample-select">LOAD A SAMPLE</label>
+        <div class="select-wrap">
+          <select id="sample-select" aria-label="Load a sample document">
+            <option value="">Choose a sample document</option>
+          </select>
+          <span aria-hidden="true">⌄</span>
+        </div>
+
+        <label class="field-label text-label" for="source-text">DOCUMENT CONTENT</label>
+        <textarea id="source-text" spellcheck="false" placeholder="Paste an article or report here…" aria-describedby="source-help"></textarea>
+        <div class="input-meta">
+          <span id="source-help">Text is evaluated against its own evidence.</span>
+          <span id="char-count">0 characters</span>
+        </div>
+
+        <button id="run-button" class="run-button" type="button">
+          <span class="button-label">Run audit</span>
+          <span aria-hidden="true">&#8594;</span>
+        </button>
+        <p id="error-message" class="error-message" role="alert" hidden></p>
+        <p class="privacy-note"><span aria-hidden="true">●</span> API keys stay on this machine.</p>
+      </section>
+
+      <section class="results-panel" aria-labelledby="results-title">
+        <div class="section-kicker">02 <span>FINDINGS</span></div>
+        <div class="results-heading">
+          <div>
+            <h2 id="results-title">Audit report</h2>
+            <p id="report-caption" class="subheading">Run an audit to see claim-level findings.</p>
+          </div>
+          <div id="download-actions" class="download-actions" hidden>
+            <button id="download-md" class="quiet-button" type="button" title="Download Markdown report">MD</button>
+            <button id="download-json" class="quiet-button" type="button" title="Download JSON data">JSON</button>
+          </div>
+        </div>
+
+        <div id="empty-state" class="empty-state">
+          <div class="empty-rule"></div>
+          <p class="empty-index">WAITING FOR SOURCE</p>
+          <p class="empty-title">No findings yet.</p>
+        </div>
+
+        <div id="report-content" hidden>
+          <div class="score-band">
+            <div class="score-main">
+              <span class="score-label">EVIDENCE SCORE</span>
+              <div><strong id="score-value">--</strong><span class="score-out-of">/100</span></div>
+            </div>
+            <p id="summary-text" class="summary-text"></p>
+          </div>
+
+          <div id="verdict-counts" class="verdict-counts" aria-label="Verdict totals"></div>
+
+          <div class="claim-list-heading">
+            <h3>Claims reviewed</h3>
+            <span id="claim-total"></span>
+          </div>
+          <div id="claim-list" class="claim-list"></div>
+          <p id="usage-note" class="usage-note"></p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+# Prompt file. Placeholders use string.Template syntax ($text, $claim, ...).
+
+system: |
+  You are a rigorous, skeptical text analyst. You judge whether claims are
+  supported by the evidence INSIDE the provided source text, not by your own
+  world knowledge. You never invent quotes. You reply with a single JSON
+  object and nothing else: no markdown fences, no commentary.
+
+extract_claims: |
+  Extract the distinct, checkable claims made in the source text below.
+
+  Rules:
+  - A claim is an assertion that could be true or false (empirical, causal,
+    comparative, numeric or predictive). Skip opinions, definitions, greetings.
+  - Rewrite each claim as one self-contained sentence (resolve pronouns).
+  - Merge duplicates. Return at most $max_claims claims, most important first.
+  - type must be one of: empirical, causal, comparative, numeric, predictive.
+
+  Return exactly this JSON shape:
+  {"claims": [{"id": 1, "text": "...", "type": "causal"}]}
+
+  SOURCE TEXT:
+  """
+  $text
+  """
+
+audit_claim: |
+  Audit ONE claim against the source text.
+
+  Decide how well the source itself supports the claim:
+  - supported: the source gives direct, sufficient evidence
+  - partially_supported: evidence exists but is incomplete or indirect
+  - overstated: evidence exists but the claim is stronger than it justifies
+    (e.g. correlation presented as causation, small sample generalised)
+  - unsupported: no evidence for it in the source
+
+  Rules:
+  - evidence_quote MUST be copied verbatim from the source (max 40 words).
+    Use "" if there is no supporting passage. Never paraphrase inside it.
+  - issues: short phrases naming reasoning problems, drawn from this list when
+    applicable: causal_leap, small_sample, cherry_picking, missing_baseline,
+    vague_quantifier, appeal_to_authority, no_source, overgeneralisation,
+    selection_bias, none.
+  - confidence: your confidence in the verdict, 0.0 to 1.0.
+  - rewrite: if the verdict is not "supported", a more defensible version of
+    the claim that the evidence would justify; otherwise "".
+
+  Return exactly this JSON shape:
+  {"verdict": "...", "evidence_quote": "...", "issues": ["..."],
+   "confidence": 0.0, "rationale": "one or two sentences", "rewrite": "..."}
+
+  CLAIM:
+  $claim
+
+  SOURCE TEXT:
+  """
+  $text
+  """
+
+audit_claims: |
+  Audit each claim below independently against the source text.
+
+  For every claim, decide how well the source itself supports it:
+  - supported: the source gives direct, sufficient evidence
+  - partially_supported: evidence exists but is incomplete or indirect
+  - overstated: evidence exists but the claim is stronger than it justifies
+    (e.g. correlation presented as causation, small sample generalised)
+  - unsupported: no evidence for it in the source
+
+  Rules:
+  - Return exactly one result for every input claim, preserving its id.
+  - evidence_quote MUST be copied verbatim from the source (max 40 words).
+    Use "" if there is no supporting passage. Never paraphrase inside it.
+  - issues: short phrases naming reasoning problems, drawn from this list when
+    applicable: causal_leap, small_sample, cherry_picking, missing_baseline,
+    vague_quantifier, appeal_to_authority, no_source, overgeneralisation,
+    selection_bias, none.
+  - confidence: your confidence in the verdict, 0.0 to 1.0.
+  - rewrite: if the verdict is not "supported", a more defensible version of
+    the claim that the evidence would justify; otherwise "".
+
+  Return exactly this JSON shape:
+  {"audits": [{"id": 1, "verdict": "...", "evidence_quote": "...",
+   "issues": ["..."], "confidence": 0.0,
+   "rationale": "one or two sentences", "rewrite": "..."}]}
+
+  CLAIMS (JSON):
+  $claims
+
+  SOURCE TEXT:
+  """
+  $text
+  """
+
+summarize: |
+  Write a 3 to 4 sentence executive summary of this audit for a reader who has
+  not seen the source. State the overall reliability, name the most serious
+  weaknesses, and be specific. No hedging filler.
+
+  Return exactly: {"summary": "..."}
+
+  AUDIT RESULTS (JSON):
+  $audits

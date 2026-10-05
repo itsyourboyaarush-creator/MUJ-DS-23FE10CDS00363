@@ -1,0 +1,135 @@
+{
+  "score": 66.2,
+  "summary": "This audit reveals that while basic data regarding weight loss and sleep in a small study is supported, broader claims about the universal efficacy and health benefits of intermittent fasting are unsupported or overstated. The research suffers from significant methodological weaknesses, including a small sample size, selection bias from social media recruitment, and a lack of baseline health tracking. Consequently, the findings are unreliable for making generalized health conclusions.",
+  "audits": [
+    {
+      "claim": {
+        "id": 1,
+        "text": "A study of 30 volunteers at a single gym found that participants who skipped breakfast for four weeks lost an average of 2 kilograms.",
+        "type": "numeric"
+      },
+      "verdict": "supported",
+      "evidence_quote": "A groundbreaking study of 30 volunteers at a single gym found that people who skipped breakfast for four weeks lost an average of 2 kilograms.",
+      "grounded": true,
+      "issues": [],
+      "confidence": 1.0,
+      "rationale": "The claim matches the source text exactly.",
+      "rewrite": "",
+      "error": ""
+    },
+    {
+      "claim": {
+        "id": 2,
+        "text": "The fasting supplement market will triple within two years.",
+        "type": "predictive"
+      },
+      "verdict": "supported",
+      "evidence_quote": "industry insiders predict the fasting supplement market will triple within two years.",
+      "grounded": true,
+      "issues": [],
+      "confidence": 1.0,
+      "rationale": "The claim accurately reflects the prediction mentioned in the source text.",
+      "rewrite": "",
+      "error": ""
+    },
+    {
+      "claim": {
+        "id": 3,
+        "text": "Participants in the study who skipped breakfast for four weeks slept slightly better on average.",
+        "type": "empirical"
+      },
+      "verdict": "supported",
+      "evidence_quote": "fasters also slept slightly better on average",
+      "grounded": true,
+      "issues": [],
+      "confidence": 1.0,
+      "rationale": "The claim is directly supported by the source text.",
+      "rewrite": "",
+      "error": ""
+    },
+    {
+      "claim": {
+        "id": 4,
+        "text": "Intermittent fasting melts fat faster than any other method.",
+        "type": "comparative"
+      },
+      "verdict": "overstated",
+      "evidence_quote": "A groundbreaking study of 30 volunteers at a single gym found that people who skipped breakfast for four weeks lost an average of 2 kilograms.",
+      "grounded": true,
+      "issues": [
+        "small_sample",
+        "selection_bias",
+        "missing_baseline"
+      ],
+      "confidence": 1.0,
+      "rationale": "The study only compared 30 people at one gym and did not compare the results against other weight loss methods, making the claim of superiority unsupported.",
+      "rewrite": "A small study of 30 gym-goers found that skipping breakfast for four weeks was associated with an average weight loss of 2 kilograms.",
+      "error": ""
+    },
+    {
+      "claim": {
+        "id": 5,
+        "text": "Intermittent fasting works for everyone.",
+        "type": "empirical"
+      },
+      "verdict": "unsupported",
+      "evidence_quote": "",
+      "grounded": false,
+      "issues": [
+        "small_sample",
+        "selection_bias"
+      ],
+      "confidence": 1.0,
+      "rationale": "The source provides no evidence that intermittent fasting works for everyone; it only cites a small, non-representative sample of 30 gym-goers.",
+      "rewrite": "Intermittent fasting may lead to weight loss for some individuals.",
+      "error": ""
+    },
+    {
+      "claim": {
+        "id": 6,
+        "text": "Fasting protects the heart and extends lifespan.",
+        "type": "causal"
+      },
+      "verdict": "unsupported",
+      "evidence_quote": "The study did not track blood sugar or heart health, but fasters also slept slightly better on average, which proves fasting protects your heart and extends your lifespan.",
+      "grounded": true,
+      "issues": [
+        "causal_leap"
+      ],
+      "confidence": 1.0,
+      "rationale": "The text explicitly admits the study did not track heart health and provides no data on lifespan, making the conclusion a logical fallacy.",
+      "rewrite": "Some people report improved sleep quality when practicing intermittent fasting.",
+      "error": ""
+    },
+    {
+      "claim": {
+        "id": 7,
+        "text": "The study of 30 volunteers did not track blood sugar or heart health.",
+        "type": "empirical"
+      },
+      "verdict": "supported",
+      "evidence_quote": "The study did not track blood sugar or heart health",
+      "grounded": true,
+      "issues": [],
+      "confidence": 1.0,
+      "rationale": "The source text explicitly states that the study did not track these specific health metrics.",
+      "rewrite": "",
+      "error": ""
+    },
+    {
+      "claim": {
+        "id": 8,
+        "text": "The participants in the study were recruited through a fitness influencer's Instagram page.",
+        "type": "empirical"
+      },
+      "verdict": "supported",
+      "evidence_quote": "The participants were all recruited through a fitness influencer's Instagram page.",
+      "grounded": true,
+      "issues": [],
+      "confidence": 1.0,
+      "rationale": "The source text explicitly confirms the recruitment method for the study participants.",
+      "rewrite": "",
+      "error": ""
+    }
+  ]
+}

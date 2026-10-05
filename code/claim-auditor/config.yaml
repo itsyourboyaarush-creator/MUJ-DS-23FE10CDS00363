@@ -1,0 +1,20 @@
+llm:
+  provider: anthropic           # anthropic | gemini  (override with CLAIM_AUDITOR_PROVIDER)
+  model: claude-sonnet-4-5      # e.g. gemini-3-flash-preview for gemini (override with CLAIM_AUDITOR_MODEL)
+  max_tokens: 2000
+  temperature: 0.2
+  max_retries: 3
+  timeout_s: 60
+
+pipeline:
+  max_claims: 12                # cap on claims extracted per document
+  max_workers: 4                # parallel audit batches
+  audit_batch_size: 3           # claims per audit request
+  max_input_chars: 20000        # refuse/truncate beyond this to bound cost
+
+cache:
+  enabled: true
+  dir: .cache
+
+output:
+  dir: reports
