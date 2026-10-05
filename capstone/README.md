@@ -1,8 +1,8 @@
-# Capstone: Claim Auditor
+# Capstone Repository
 
-- **Project:** Claim Auditor
-- **Contributor:** Aarush Kumar (individual group)
+- **Capstone topic:** To be confirmed with the instructor
+- **Contributor:** Aarush Kumar (individual team)
 - **Instructor collaborator:** `sandeepmbm` (invitation pending acceptance)
-- **Source code:** [`../code/claim-auditor/`](../code/claim-auditor/)
+- **Separate repository:** [MUJ-DS-23FE10CDS00363-Capstone](https://github.com/itsyourboyaarush-creator/MUJ-DS-23FE10CDS00363-Capstone)
 
-This folder tracks the individual capstone material in the personal portfolio. If the training coordinator requires a separate team capstone repository, create it under the coordinator's naming convention and link it here.
+Claim Auditor is a separate personal project and is not the capstone. Use the linked repository for capstone work once the topic and scope are approved.

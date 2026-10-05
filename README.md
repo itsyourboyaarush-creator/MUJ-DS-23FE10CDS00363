@@ -18,6 +18,10 @@ Claim Auditor analyzes claims in a supplied document and checks how well the doc
 
 The project evaluates support within the submitted text; it does not independently verify facts against external sources.
 
+## Capstone Repository
+
+The capstone is a separate project whose topic is awaiting instructor approval: [MUJ-DS-23FE10CDS00363-Capstone](https://github.com/itsyourboyaarush-creator/MUJ-DS-23FE10CDS00363-Capstone).
+
 ### Run the project
 
 ```powershell
